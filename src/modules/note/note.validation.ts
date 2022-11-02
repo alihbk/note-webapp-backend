@@ -1,4 +1,5 @@
 import Joi from "joi";
+import { objectId } from "../../validate/custom.validation";
 import { Tag } from "./note.interfaces";
 
 const createNoteBody = {
@@ -17,4 +18,10 @@ export const getNotes = {
 
 export const createNote = {
   body: Joi.object().keys(createNoteBody),
+};
+
+export const deleteNote = {
+  params: Joi.object().keys({
+    id: Joi.string().custom(objectId),
+  }),
 };

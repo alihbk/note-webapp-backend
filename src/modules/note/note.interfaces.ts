@@ -1,4 +1,4 @@
-import mongoose, { Model, Document } from "mongoose";
+import { Document } from "mongoose";
 
 export enum Tag {
   ToDo = "ToDo",

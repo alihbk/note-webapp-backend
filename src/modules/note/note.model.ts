@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { INote, Tag } from "./note.interfaces";
 
 const NoteSchema: Schema = new Schema({
