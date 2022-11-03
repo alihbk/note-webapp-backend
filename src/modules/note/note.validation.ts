@@ -25,3 +25,16 @@ export const deleteNote = {
     id: Joi.string().custom(objectId),
   }),
 };
+
+export const updateNote = {
+  params: Joi.object().keys({
+    id: Joi.required().custom(objectId),
+  }),
+  body: Joi.object()
+    .keys({
+      title: Joi.string(),
+      body: Joi.string(),
+      tag: Joi.string().valid(...Object.values(Tag)),
+    })
+    .min(1),
+};

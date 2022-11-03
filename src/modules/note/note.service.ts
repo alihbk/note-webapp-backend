@@ -1,4 +1,4 @@
-import { INote } from "./note.interfaces";
+import { INote, UpdateNoteBody } from "./note.interfaces";
 import Note from "./note.model";
 import mongoose from "mongoose";
 import { ApiError } from "../../errors";
@@ -26,4 +26,18 @@ export const deleteNoteById = async (
   }
   await user.remove();
   return user;
+};
+
+export const updateNoteById = async (
+  id: mongoose.Types.ObjectId,
+  updateBody: UpdateNoteBody
+): Promise<INote | null> => {
+  const note = await getNoteById(id);
+  if (!note) {
+    throw new ApiError(httpStatus.NOT_FOUND, "Note not found");
+  }
+
+  Object.assign(note, updateBody);
+  await note.save();
+  return note;
 };

@@ -22,3 +22,10 @@ export const deleteNote = catchAsync(async (req: Request, res: Response) => {
     res.status(httpStatus.NO_CONTENT).send();
   }
 });
+
+export const updateNote = catchAsync(async (req: Request, res: Response) => {
+  if (typeof req.params['id'] === 'string') {
+    const note = await noteService.updateNoteById(new mongoose.Types.ObjectId(req.params['id']), req.body);
+    res.send(note);
+  }
+});

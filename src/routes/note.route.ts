@@ -8,12 +8,14 @@ router
   .route("/")
   .post(validate(noteValidation.createNote), noteController.createNote)
   .get(validate(noteValidation.getNotes), noteController.getNotes)
-  .delete(validate(noteValidation.deleteNote), noteController.deleteNote);
+  .delete(validate(noteValidation.deleteNote), noteController.deleteNote)
+  .patch(validate(noteValidation.updateNote), noteController.updateNote);
 
 router
   .route("/:id")
   .delete(validate(noteValidation.deleteNote), noteController.deleteNote)
   .post(validate(noteValidation.createNote), noteController.createNote)
-  .get(validate(noteValidation.getNotes), noteController.getNotes);
+  .get(validate(noteValidation.getNotes), noteController.getNotes)
+  .patch(validate(noteValidation.updateNote), noteController.updateNote);
 
 export default router;

@@ -11,3 +11,4 @@ export interface INote extends Document {
   body: string;
   tag: Tag;
 }
+export type UpdateNoteBody = Partial<INote>;
